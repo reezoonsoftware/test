@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dukan360</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Local Libraries -->
+    <script src="lib/tailwind-cdn.js"></script>
+    <script src="lib/react.min.js"></script>
+    <script src="lib/react-dom.min.js"></script>
+    <script src="lib/lucide.min.js"></script>
+    <script src="lib/html5-qrcode.min.js"></script>
+    <script src="lib/html2canvas.min.js"></script>
+    <script src="lib/jspdf.umd.min.js"></script>
+    <script src="lib/jspdf.plugin.autotable.min.js"></script>
+    
+    <!-- Firebase SDK Compat -->
+    <script src="lib/firebase-app-compat.js"></script>
+    <script src="lib/firebase-auth-compat.js"></script>
+    <script src="lib/firebase-firestore-compat.js"></script>
+</head>
+<body class="bg-slate-50 overflow-hidden h-screen w-screen">
+    <div id="root" class="h-full w-full"></div>
+
+    <!-- Application Logic -->
+    <script src="js/app.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(() => {
+                    console.log('App is now Offline-Ready! 🚀');
+                }).catch(err => console.log('SW Registration failed', err));
+            });
+        }
+    </script>
+</body>
+</html>
